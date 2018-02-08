@@ -34,7 +34,7 @@ function callback(html) {
 
 	});
 
-	createNews('./data',arrUrl);
+	createNews('.',arrUrl);
 }
 
 //创建文件
@@ -47,14 +47,14 @@ function createNews(path, content) {
 	});
 }
 
-//每天八点定时操作
+//每小时更新一次
     var rule = new schedule.RecurrenceRule();  
-    rule.dayOfWeek = [0, new schedule.Range(1, 6)];
-　　rule.hour = 8;
-　　rule.minute = 0;
-
-　　var j = schedule.scheduleJob(rule, function(){
-        getNews();
-　　　　console.log("今天新闻已更新"+ new Date());
-
-　　});
+    var times = [];  
+    for(var i=1; i<24; i++){
+　　　　times.push(i);
+　　}
+    rule.hour = times;  
+    schedule.scheduleJob(rule, function(){  
+       getNews(); 
+       console.log("今天新闻已更新"+ new Date());
+    });  
