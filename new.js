@@ -34,12 +34,12 @@ function callback(html) {
 
 	});
 
-	createNews('.',arrUrl);
+	createNews('news.txt',arrUrl);
 }
 
 //创建文件
 function createNews(path, content) {
-	fs.writeFile(path + "news.txt", content, function(err) {
+	fs.writeFile(path, content, function(err) {
 		if (err) {
 			return console.log(err);
 		}

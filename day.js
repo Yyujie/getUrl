@@ -40,14 +40,14 @@ function callback(html) {
 	});
 
 	arr = arrDays + ',' + arrWeas
-	createNews('.', arr);
+	createNews('days.txt', arr);
 
 
 }
 
 //创建文件
 function createNews(path, content) {
-	fs.writeFile(path + "days.txt", content, function(err) {
+	fs.writeFile(path, content, function(err) {
 		if (err) {
 			return console.log(err);
 		}
